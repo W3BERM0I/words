@@ -1,0 +1,25 @@
+@import url(./reset.css);
+@import url(./variaveis.css);
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;1,900&display=swap');
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Barra de rolagem */
+
+::-webkit-scrollbar-track {
+  background-color: var(--brancoClaro);
+  width: 0;
+  height: 1%;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: var(--brancoClaro);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--cinzaEscuro);
+  border-radius: 0;
+}
