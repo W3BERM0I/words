@@ -1,23 +1,30 @@
 <template>
-  <main>
-    <section class="principal">
+  <main> 
+    <section>
       <div class="expresions">
         <h1 class="title">Expressions</h1>
         <div v-for="(word, index) in this.words" :key="index">
-          <p class="word">{{word['word'] }}</p>
-          <p>{{word['definition']}}</p>
+          <p class="content1">{{word['word'] }}</p>
+          <p class="info">{{word['definition']}}</p>
         </div>
       </div>
-      <div class="sentences">
-        <h1 class="title">Sentences</h1>
-        <p v-for="(sentence, index) in this.sentences" :key="index">{{sentence}}</p>
-      </div>
-    </section> 
-    <section class="principal">
       <div class="questions">
         <h1 class="title">Questions</h1>
-        <p v-for="(question, index) in this.questions" :key="index">{{question}}
+        <p class="content" v-for="(question, index) in this.questions" :key="index">  {{question}}
         </p>
+      </div>
+      <div>
+        <h1 class="title">Sentences</h1>
+        <p class="content" v-for="(sentence, index) in this.sentences" :key="index">{{sentence}}</p>
+      </div>
+    </section>
+    <section>
+      <div>
+        <h1 class="title">Words</h1>
+        <div  v-for="(sentence, index) in this.vocabulary" :key="index">
+          <p class="content1">{{sentence.word}}</p>
+          <p class="info">{{sentence.definition}}</p>
+        </div>
       </div>
     </section>
   </main>
@@ -46,6 +53,9 @@ export default {
       await randomWord.get('/idiom').then(res => {
         this.words.push(res.data[0])
       })
+    }
+
+    for (var j = 0; i < 19; i++) {
       await randomWord.get('/vocabulary').then(res => {
         this.vocabulary.push(res.data[0])
       })
@@ -56,29 +66,51 @@ export default {
 
 <style scoped>
 main {
-  min-height: 60vh;
+  min-height: 90vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: space-around;
-  background-color: var(--brancoClaro);
+  align-items: space-between;
+  background-color: var(--brancoEscuro);
 }
 
-.principal {
-  display: flex;
-  justify-content: center;
+section {
   align-items: flex-start;
+  background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 20px 10px;
   padding: 20px;
+  min-width: 25vw;
 }
 .title {
   color: var(--verdeClaro);
   font-weight: 700;
   font-size: 50px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.word {
+.content {
   color: var(--cinzaEscuro);
   font-weight: 600;
-  font-size: 30px; 
+  font-size: 25px;
+  text-align: center;
+  text-overflow: clip; 
+  margin-bottom: 5px;
+}
+
+.content1 {
+  color: var(--cinzaEscuro);
+  font-weight: 600;
+  font-size: 25px;
+  text-overflow: clip; 
+}
+
+.info {
+  color: var(--cinzaEscuro);
+  font-size: 23px;
 }
 </style>

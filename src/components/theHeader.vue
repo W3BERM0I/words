@@ -17,7 +17,7 @@
 
 <style scoped>
   header {
-    background: var(--azulClaro);
+    background: var(--preto);
     display: flex;
     align-items: center;
     justify-content: center;
