@@ -4,8 +4,8 @@
       <div class="expresions">
         <h1 class="title">Expressions</h1>
         <div v-for="(word, index) in this.words" :key="index">
-          <p class="content1">{{word['word'] }}</p>
-          <p class="info">{{word['definition']}}</p>
+          <p class="content">{{word['word'] }}</p>
+          <p class="info1">{{word['definition']}}</p>
         </div>
       </div>
       <div class="questions">
@@ -112,5 +112,11 @@ section {
 .info {
   color: var(--cinzaEscuro);
   font-size: 23px;
+}
+
+.info1 {
+  color: var(--cinzaEscuro);
+  font-size: 23px;
+  text-align: center;
 }
 </style>
