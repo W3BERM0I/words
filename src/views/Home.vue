@@ -77,6 +77,7 @@ main {
 section {
   align-items: flex-start;
   background: rgb(255, 255, 255);
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
