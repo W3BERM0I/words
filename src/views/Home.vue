@@ -13,7 +13,7 @@
         <p class="content" v-for="(question, index) in this.questions" :key="index">  {{question}}
         </p>
       </div>
-      <div>
+      <div class="sentences">
         <h1 class="title">Sentences</h1>
         <p class="content" v-for="(sentence, index) in this.sentences" :key="index">{{sentence}}</p>
       </div>
@@ -21,7 +21,7 @@
     <section>
       <div>
         <h1 class="title">Words</h1>
-        <div  v-for="(sentence, index) in this.vocabulary" :key="index">
+        <div class="words"  v-for="(sentence, index) in this.vocabulary" :key="index">
           <p class="content1">{{sentence.word}}</p>
           <p class="info">{{sentence.definition}}</p>
         </div>
@@ -42,8 +42,12 @@ export default {
       vocabulary: []
     }
   },
-   async created() {
-    for (var i = 0; i < 3; i++) {
+   created() {
+    this.geraConteudo()
+  },
+  methods: {
+    async geraConteudo() {
+      for (var i = 0; i < 3; i++) {
       await randomWord.get('/question').then(res => {
         this.questions.push(res.data[0]['word'])
       })
@@ -60,7 +64,9 @@ export default {
         this.vocabulary.push(res.data[0])
       })
     }
+    }
   }
+  
 }
 </script>
 
@@ -119,5 +125,36 @@ section {
   color: var(--cinzaEscuro);
   font-size: 23px;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.questions > .content {
+    margin-bottom: 20px;
+  }
+
+  .sentences > .content {
+    margin-bottom: 20px;
+  }
+  .words > .info {
+    margin-bottom: 10px;
+  }
+
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+
+  .questions > .content {
+    margin-bottom: 20px;
+  }
+
+  .sentences > .content {
+    margin-bottom: 20px;
+  }
+  .words > .info {
+    margin-bottom: 10px;
+  }
 }
 </style>
