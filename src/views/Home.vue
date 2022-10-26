@@ -59,7 +59,7 @@ export default {
       })
     }
 
-    for (var j = 0; i < 19; i++) {
+    for (var j = 0; i < 15; i++) {
       await randomWord.get('/vocabulary').then(res => {
         this.vocabulary.push(res.data[0])
       })
@@ -143,18 +143,12 @@ section {
 @media screen and (max-width: 768px) {
   main {
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
-
-  .questions > .content {
-    margin-bottom: 20px;
-  }
-
-  .sentences > .content {
-    margin-bottom: 20px;
-  }
-  .words > .info {
-    margin-bottom: 10px;
+  section {
+    margin: 10px 5px;
   }
 }
 </style>
