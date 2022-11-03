@@ -1,7 +1,8 @@
 <template>
   <header>
     <button class="title" @click.prevent="refresh">Learn English</button>
-    <input type="text" class="targetWord" v-model="this.targetWord" >
+    <h1>{{this.$route.back}}</h1>
+    <input type="text" class="targetWord" @click.prevent="word" placeholder="Search a word" v-model="this.searchWord" >
   </header>
 </template>
 
@@ -9,12 +10,24 @@
   export default {
     data() {
       return {
-        targetWord: ''
+        searchWord: ''
       }
     },
     methods: {
       refresh() {
-        location.reload()
+        if(this.$route.fullPath == '/')
+          location.reload()
+        else
+          this.$router.push({ name: "home" })
+      },
+
+    },
+    watch: {
+      searchWord() {
+        console.log("word: " + this.searchWord)
+        if(this.$route.fullPath == '/') {
+          this.$router.push({ name: "searchWord" })
+        }
       }
     }
   }
@@ -23,7 +36,7 @@
 <style scoped>
 
   h1 {
-    display: none;
+    color: white;
   }
 
   header {
@@ -56,6 +69,7 @@
     border-radius: 20px;
     padding: 1px 80px;
     text-align: center;
+
     font-size: 40px;
   }
 
