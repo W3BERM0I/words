@@ -18,6 +18,11 @@
         this.$route.fullPath == '/' ? location.reload() : this.$router.push({ name: "home" })
       },
       word() {
+        this.$store.dispatch('defineSearchWord', this.searchWord).then(() => {
+          console.log("search word successfully updated")
+        }).catch(() => {
+          console.log("search word has not been updated")
+        })
         this.$route.fullPath == '/word' ? location.reload() : this.$router.push({ name: "searchWord" })
       }
     },

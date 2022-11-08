@@ -1,7 +1,6 @@
 <template>
   <div class="word">
-    <h1>Here is the search word!!!  {{count}}</h1>
-    <p>word: {{word}}</p>s
+    <p>{{ searchWord }}</p>
   </div>
 
   <ul v-for="def in definition">
@@ -28,13 +27,21 @@ export default {
   },
   methods: {
     async geraConteudo() {
-      await apiDictionary.get('help').then(res => {
+      if(this.searchWord == '') return
+
+      await apiDictionary.get(this.searchWord).then(res => {
         this.word = res.data[0]["word"]
         res.data[0]["meanings"][0]["definitions"].forEach(el => {
           this.definition.push(el["definition"])
           this.example.push(el["example"])
         });
       })
+    
+  }
+  },
+  computed: {
+    searchWord() {
+      return this.$store.state.word
     }
   }
 }

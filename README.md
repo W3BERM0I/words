@@ -1,6 +1,11 @@
-# wordsMyFirstProgram
+## wordsMyFirstProgram
 
 This template should help get you started developing with Vue 3 in Vite.
+
+## translate api
+
+https://github.com/LibreTranslate/LibreTranslate
+https://libretranslate.com/?source=en&target=pt&q=try
 
 ## api
 
