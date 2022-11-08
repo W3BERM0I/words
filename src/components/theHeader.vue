@@ -2,7 +2,7 @@
   <header>
     <button class="title" @click.prevent="refresh">Learn English</button>
     <h1>{{this.$route.back}}</h1>
-    <input type="text" class="targetWord" @click.prevent="word" placeholder="Search a word" v-model="this.searchWord" >
+    <input type="text" class="targetWord" @keydown.enter="word" placeholder="Search a word" v-model="this.searchWord" >
   </header>
 </template>
 
@@ -15,19 +15,15 @@
     },
     methods: {
       refresh() {
-        if(this.$route.fullPath == '/')
-          location.reload()
-        else
-          this.$router.push({ name: "home" })
+        this.$route.fullPath == '/' ? location.reload() : this.$router.push({ name: "home" })
       },
-
+      word() {
+        this.$route.fullPath == '/word' ? location.reload() : this.$router.push({ name: "searchWord" })
+      }
     },
     watch: {
       searchWord() {
         console.log("word: " + this.searchWord)
-        if(this.$route.fullPath == '/') {
-          this.$router.push({ name: "searchWord" })
-        }
       }
     }
   }
