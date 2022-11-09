@@ -103,7 +103,7 @@ section {
 .content {
   color: var(--cinzaEscuro);
   font-weight: 600;
-  font-size: 25px;
+  font-size: 29px;
   text-align: center;
   text-overflow: clip; 
   margin-bottom: 5px;
@@ -118,12 +118,12 @@ section {
 
 .info {
   color: var(--cinzaEscuro);
-  font-size: 23px;
+  font-size: 27px;
 }
 
 .info1 {
   color: var(--cinzaEscuro);
-  font-size: 23px;
+  font-size: 27px;
   text-align: center;
   margin-bottom: 20px;
 }
