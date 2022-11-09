@@ -1,14 +1,15 @@
 <template>
-  <div class="word">
-    <p>{{ searchWord }}</p>
+  <div v-show="this.noWord()" class="word">
+    <p>{{ word }}</p>
+    <div>
+      <ul v-for="(def, index) in definition" :key="index">
+        <li>{{def}}</li>
+      </ul>
+      <ul v-for="(ex, index) in example" :key="index">
+        <li>{{ex}}</li>
+      </ul>
+    </div>
   </div>
-
-  <ul v-for="def in definition">
-    <li>{{def}}</li>
-  </ul>
-  <ul v-for="ex in example">
-    <li>{{ex}}</li>
-  </ul>
 </template>
 
 <script>
@@ -37,7 +38,10 @@ export default {
         });
       })
     
-  }
+  },
+    noWord() {
+      return !Boolean(this.word.length == 0);
+    }
   },
   computed: {
     searchWord() {
@@ -52,5 +56,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  li {
+    color: black;
   }
 </style>
