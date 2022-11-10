@@ -50,14 +50,15 @@ export default {
           this.example.push(el["example"])
         });
       })
+      console.log(this.example)
     
     },
     noWord() {
       return !Boolean(this.word.length == 0);
     },
     exampleIsNull() {
-      console.log(this.example.length == 0 || this.example.length == 1)
-      return !Boolean(this.example.length == 0 || this.example.length == 1);
+      if(this.example[0]) return Boolean(this.example[0].length !== 0)
+      return false
     }
   },
   computed: {

@@ -23,6 +23,7 @@
           console.log("search word has not been updated")
         })
         this.$route.fullPath == '/word' ? location.reload() : this.$router.push({ name: "searchWord" })
+        this.searchWord = ''
       }
     },
     watch: {
