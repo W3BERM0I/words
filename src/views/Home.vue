@@ -91,6 +91,7 @@ section {
   margin: 20px 10px;
   padding: 20px;
   min-width: 25vw;
+  min-height: 83vh;
 }
 .title {
   color: var(--verdeClaro);

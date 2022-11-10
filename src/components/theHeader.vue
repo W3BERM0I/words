@@ -1,7 +1,6 @@
 <template>
   <header>
     <button class="title" @click.prevent="refresh">Learn English</button>
-    <h1>{{this.$route.back}}</h1>
     <input type="text" class="targetWord" @keydown.enter="word" placeholder="Search a word" v-model="this.searchWord" >
   </header>
 </template>
@@ -36,15 +35,12 @@
 
 <style scoped>
 
-  h1 {
-    color: white;
-  }
-
   header {
     background: var(--preto);
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100vw;
   }  
   .title {
     color: var(--brancoClaro);
@@ -55,6 +51,7 @@
     margin-right: 250px;
     text-align: center;
     border: none;
+    white-space: nowrap;
   }
 
   .title:hover {
@@ -76,7 +73,10 @@
 
   @media screen and (max-width: 768px) {
     .targetWord {
-      display: none;
+      max-width: 25%;
+      font-size: 25px;
+      margin-left: 30px;
+      padding: 4px 40px;
     }
 
     header {
@@ -86,10 +86,17 @@
     .title {
       color: var(--brancoClaro);
       font-weight: 700;
-      font-size: 45px;
+      font-size: 30px;
       margin: 0px;
       margin-right: 0px;
+      margin-left: 5px;
       padding: 2px 0px 2px 0px;
     }
+    .title:hover {
+    transform: scale(1.1);
+    }
   }
+
+
+
 </style>

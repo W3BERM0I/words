@@ -1,5 +1,10 @@
 <template>
   <main>
+    <div class="notification" v-show="!this.noWord()">
+      <h2>Please re-enter a word</h2>
+      <p>Now don't have any word to search, please re-enter any in word to search</p>
+    </div>
+
     <div v-show="this.noWord()" class="word">
       <p class="title">{{ word }}</p>
       <div class="content">
@@ -9,7 +14,7 @@
               <li>{{def}}</li>
             </ul>
           </div>
-          <div>
+          <div v-show="this.exampleIsNull()">
             <h2>Examples</h2>
             <ul v-for="(ex, index) in example" :key="index">
               <li>{{ex}}</li>
@@ -46,9 +51,13 @@ export default {
         });
       })
     
-  },
+    },
     noWord() {
       return !Boolean(this.word.length == 0);
+    },
+    exampleIsNull() {
+      console.log(this.example.length == 0 || this.example.length == 1)
+      return !Boolean(this.example.length == 0 || this.example.length == 1);
     }
   },
   computed: {
@@ -78,6 +87,7 @@ export default {
     min-height: 50vh;
     min-width: 50vw;
     border-radius: 20px;
+    margin-top: 40px;
   }
 
   .content {
@@ -104,6 +114,26 @@ export default {
   li {
     color: var(--cinzaEscuro);
     font-weight: 400;
+  }
+
+  .notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .notification>h2 {
+    margin-top: 70px;
+    font-weight: 700;
+    font-size: 50px;
+  }
+
+  .notification>p {
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 30px;
   }
 
 </style>
