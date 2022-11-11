@@ -6,7 +6,7 @@
     </div>
 
     <div v-show="this.noWord()" class="word">
-      <p class="title">{{ word }}</p>
+      <p class="title">{{ word.toUpperCase() }}</p>
       <div class="content">
           <div>
             <h2>Definition</h2>
