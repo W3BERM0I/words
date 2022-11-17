@@ -6,7 +6,12 @@
     </div>
 
     <div v-show="this.noWord()" class="word">
-      <p class="title">{{ word }} - {{ translate }}</p>
+      <div class="div-title">
+        <p class="title">{{ word }} - {{ translate }}</p>
+        <audio class="audio" :src="this.audio" mozCurrentSampleOffset="true" controls preload>
+          <p>Your browser doesn't support HTML5 video. Here is a <a :href="this.audio">link to the video</a> instead.</p>
+        </audio>
+      </div>
       <div class="content">
           <div>
             <h2>Definition</h2>
@@ -33,6 +38,7 @@ export default {
   data() {
     return {
       word: '',
+      audio: '',
       translate: '',
       definition: [],
       example: []
@@ -47,6 +53,7 @@ export default {
       if(this.searchWord == '') return
       await apiDictionary.get(this.searchWord).then(res => {
         this.word = res.data[0]["word"].toUpperCase()
+        this.audio = res.data[0]["phonetics"][0]["audio"]
         res.data[0]["meanings"][0]["definitions"].forEach(el => {
         this.definition.push(el["definition"])
         this.example.push(el["example"])
@@ -104,11 +111,24 @@ export default {
     margin: 0px 40px;
   }
 
+  .div-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 6vw;
+    align-content: space-between;
+  }
+
+  .audio {
+    width: 20vw;
+  }
+
   .title {
     font-size: 60px;
     font-weight: 700;
     justify-items: flex-start;
-    color: var(--verdeClaro)
+    color: var(--verdeClaro);
+    white-space: no-wrap;
   }
 
   h2 {
@@ -139,6 +159,24 @@ export default {
     margin-top: 30px;
     font-weight: 400;
     font-size: 30px;
+  }
+
+  @media screen and (max-width: 767px){
+    .div-title {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      padding-top: 40px;
+    }
+
+    .title {
+      font-size: 35px;
+    }
+
+    .audio {
+      width: 60vw;
+    }
   }
 
 </style>

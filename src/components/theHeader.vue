@@ -68,33 +68,55 @@
     border-radius: 20px;
     padding: 1px 80px;
     text-align: center;
-
     font-size: 40px;
   }
 
   @media screen and (max-width: 768px) {
     .targetWord {
-      max-width: 25%;
-      font-size: 25px;
-      margin-left: 30px;
-      padding: 4px 40px;
+      max-width: 30%;
+      font-size: 20px;
+      margin-left: 20px;
+      padding: 4px 30px;
     }
 
     header {
-        min-height: 80px;
+      min-height: 70px;
     }
 
     .title {
       color: var(--brancoClaro);
       font-weight: 700;
-      font-size: 30px;
+      font-size: 20px;
       margin: 0px;
       margin-right: 0px;
       margin-left: 5px;
       padding: 2px 0px 2px 0px;
     }
     .title:hover {
-    transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .targetWord {
+      max-width: 40%;
+      font-size: 30px;
+      margin-left: 20px;
+      padding: 4px 0px;
+    }
+
+    header {
+      min-height: 80px;
+    }
+
+    .title {
+      color: var(--brancoClaro);
+      font-weight: 700;
+      font-size: 40px;
+      margin: 0px;
+      margin-right: 0px;
+      margin-left: 5px;
+      padding: 2px 0px 2px 0px;
     }
   }
 
