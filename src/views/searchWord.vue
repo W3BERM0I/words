@@ -6,7 +6,7 @@
     </div>
 
     <div v-show="this.noWord()" class="word">
-      <p class="title">{{ word.toUpperCase() }}</p>
+      <p class="title">{{ word.toUpperCase()}} - {{ translate.toUpperCase()}}</p>
       <div class="content">
           <div>
             <h2>Definition</h2>
@@ -27,17 +27,22 @@
 
 <script>
 import apiDictionary from '../services/apiDictionary'
+import translateApi from '../services/translateApi'
+
 
 export default {
   data() {
     return {
       word: '',
+      translate: 'teste',
+      // cancelSource: null,
       definition: [],
       example: []
     }
   },
   created() {
     this.geraConteudo()
+    this.translateWord()
   },
   methods: {
     async geraConteudo() {
@@ -53,6 +58,28 @@ export default {
       console.log(this.example)
     
     },
+    async translateWord() {
+       await translateApi.post().then(res => {
+         // this.translate = res.data
+         console.log(res)
+       }).catch(err => {
+         console.log('pauuuuuuuuuuuuuuuuuuuuuu')
+       })
+
+      // this.cancelTranslate();
+      // this.cancelSource = axios.CancelToken.source();
+      // await translateApi.get(`?engine=google&text=${this.word}&to=pt`, { cancelToken: this.cancelSource.token }).then(res => {
+      //   console.log(res)
+      // }).catch(err => {
+      //   console.log('pauuuuuuuuuuu')
+
+      // })
+    // },
+    // cancelTranslate() {
+    //   if (this.cancelSource) {
+    //       this.cancelSource.cancel();
+    //   }
+    },
     noWord() {
       return !Boolean(this.word.length == 0);
     },
@@ -65,7 +92,33 @@ export default {
     searchWord() {
       return this.$store.state.word
     }
-  }
+   }
+  // async setup() {
+  //      const encodedParams = new URLSearchParams();
+  //      encodedParams.append("q", "try");
+  //      encodedParams.append("target", "pt");
+  //      encodedParams.append("source", "en");
+  //      const options = {
+  //        method: "POST",
+  //        url: "https://google-translate1.p.rapidapi.com/language/translate/v2",
+  //        headers: {
+  //          "content-type": "application/x-www-form-urlencoded",
+  //          "Accept-Encoding": "application/gzip",
+  //          "X-RapidAPI-Key": "aeed8fecbfmsha334cae77f2243ap19ba12jsnb40940ae0ae5",
+  //          "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
+  //        },
+  //        data: encodedParams,
+  //      };
+  //      await axios
+  //        .request(options)
+  //        .then(function (response) {
+  //          console.log(response.data);
+  //         //  this.translate = response.data
+  //        })
+  //        .catch(function (error) {
+  //          console.error(error);
+  //        });
+  // }
 }
 </script>
 

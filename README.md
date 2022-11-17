@@ -6,6 +6,7 @@ This template should help get you started developing with Vue 3 in Vite.
 
 https://github.com/LibreTranslate/LibreTranslate
 https://libretranslate.com/?source=en&target=pt&q=try
+https://github.com/azharimm/api-translate
 
 ## api
 

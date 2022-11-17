@@ -27,9 +27,9 @@
       }
     },
     watch: {
-      searchWord() {
-        console.log("word: " + this.searchWord)
-      }
+      // searchWord() {
+      //   console.log("word: " + this.searchWord)
+      // }
     }
   }
 </script>
