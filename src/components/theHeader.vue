@@ -25,11 +25,6 @@
         this.$route.fullPath == '/word' ? location.reload() : this.$router.push({ name: "searchWord" })
         this.searchWord = ''
       }
-    },
-    watch: {
-      // searchWord() {
-      //   console.log("word: " + this.searchWord)
-      // }
     }
   }
 </script>

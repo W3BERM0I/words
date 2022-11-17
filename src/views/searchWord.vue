@@ -8,7 +8,7 @@
     <div v-show="this.noWord()" class="word">
       <div class="div-title">
         <p class="title">{{ word }} - {{ translate }}</p>
-        <audio class="audio" :src="this.audio" mozCurrentSampleOffset="true" controls preload>
+        <audio v-show="this.audio" class="audio" :src="this.audio" mozCurrentSampleOffset="true" controls preload>
           <p>Your browser doesn't support HTML5 video. Here is a <a :href="this.audio">link to the video</a> instead.</p>
         </audio>
       </div>
