@@ -8,20 +8,21 @@
     <div v-show="this.noWord()" class="word">
       <div class="div-title">
         <p class="title">{{ word }} - {{ translate }}</p>
-        <audio v-show="this.audio" class="audio" :src="this.audio" mozCurrentSampleOffset="true" controls preload>
+        <audio v-show="false" class="audio" id="audio" :src="this.audio" mozCurrentSampleOffset="true" controls preload>
           <p>Your browser doesn't support HTML5 video. Here is a <a :href="this.audio">link to the video</a> instead.</p>
         </audio>
+        <span @click.prevent="playAudio" v-if="this.audio" class="imgSpan"></span>
       </div>
       <div class="content">
           <div>
             <h2>Definition</h2>
-            <ul v-for="(def, index) in definition" :key="index">
+            <ul v-for="(def, index) in definition" :key="index" class="lista">
               <li>{{def}}</li>
             </ul>
           </div>
           <div v-show="this.exampleIsNull()">
             <h2>Examples</h2>
-            <ul v-for="(ex, index) in example" :key="index">
+            <ul v-for="(ex, index) in example" :key="index" class="lista">
               <li>{{ex}}</li>
             </ul>
           </div>
@@ -35,6 +36,7 @@ import apiDictionary from '../services/apiDictionary'
 import translateApi from '../services/translateApi'
 
 export default {
+  el: '#audio',
   data() {
     return {
       word: '',
@@ -71,6 +73,11 @@ export default {
     exampleIsNull() {
       if(this.example[0]) return Boolean(this.example[0].length !== 0)
       return false
+    },
+    playAudio() {
+      console.log("tocar audio chato!!!!")
+      var myAudio = document.getElementById("audio")
+      myAudio.play()
     }
   },
   computed: {
@@ -82,6 +89,13 @@ export default {
 </script>
 
 <style>
+
+.imgSpan {
+  background-image: url("../assets/img/speaker.svg"); 
+  width: 3rem;
+  height: 3rem;
+  background-repeat: no-repeat;
+}
   main {
     min-height: 100vh;
     display: flex;
@@ -109,13 +123,14 @@ export default {
     align-content: space-between;
     font-size: 25px;
     margin: 0px 40px;
+    gap: 15px;
   }
 
   .div-title {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 6vw;
+    gap: 2vw;
     align-content: space-between;
   }
 
@@ -139,6 +154,7 @@ export default {
   li {
     color: var(--cinzaEscuro);
     font-weight: 400;
+    margin-bottom: 8px;
   }
 
   .notification {
@@ -163,11 +179,16 @@ export default {
 
   @media screen and (max-width: 767px){
     .div-title {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       gap: 15px;
       padding-top: 40px;
+      flex-wrap: nowrap;
+    }
+
+    
+    .imgSpan {
+      background-image: url("../assets/img/speaker.svg"); 
+      width: 2.5rem;
+      height: 2.5rem;
     }
 
     .title {
