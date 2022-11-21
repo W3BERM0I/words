@@ -92,9 +92,10 @@ export default {
 
 .imgSpan {
   background-image: url("../assets/img/speaker.svg"); 
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   background-repeat: no-repeat;
+  margin-left: 2rem;
 }
   main {
     min-height: 100vh;
@@ -130,8 +131,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 2vw;
-    align-content: space-between;
+    align-content: center;
   }
 
   .audio {
@@ -141,9 +141,7 @@ export default {
   .title {
     font-size: 60px;
     font-weight: 700;
-    justify-items: flex-start;
     color: var(--verdeClaro);
-    white-space: no-wrap;
   }
 
   h2 {
@@ -179,20 +177,22 @@ export default {
 
   @media screen and (max-width: 767px){
     .div-title {
-      gap: 15px;
-      padding-top: 40px;
-      flex-wrap: nowrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
     
     .imgSpan {
       background-image: url("../assets/img/speaker.svg"); 
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 3rem;
+      height: 3rem;
+      margin-right: 60px;
     }
 
     .title {
-      font-size: 35px;
+      font-size: 25px;
     }
 
     .audio {
