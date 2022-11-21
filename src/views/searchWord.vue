@@ -176,6 +176,10 @@ export default {
   }
 
   @media screen and (max-width: 767px){
+    .word {
+      margin-top: 10px;
+      padding-top: 30px;
+    }
     .div-title {
       flex-direction: column;
       justify-content: center;
